@@ -1,0 +1,464 @@
+@import "tailwindcss";
+
+/* ===== SILK SAREE STORE DESIGN SYSTEM ===== */
+
+@theme inline {
+  /* Brand Colors */
+  --color-gold: #D4AF37;
+  --color-gold-light: #E8D48B;
+  --color-gold-dark: #B8960F;
+  --color-maroon: #800020;
+  --color-maroon-light: #A0324A;
+  --color-maroon-dark: #5C0018;
+  --color-cream: #FFFDD0;
+  --color-cream-dark: #F5F0C4;
+  --color-ivory: #FFFFF0;
+  --color-burgundy: #1A0A0A;
+  --color-burgundy-light: #2D1515;
+  
+  /* Neutrals */
+  --color-surface: #FDFAF3;
+  --color-surface-dark: #1A0A0A;
+  --color-text-primary: #1A0A0A;
+  --color-text-secondary: #6B5E4E;
+  --color-text-muted: #9B8E7E;
+  --color-border: #E8DCC8;
+  --color-border-dark: #3D2525;
+
+  /* Semantic */
+  --color-success: #2E7D32;
+  --color-error: #C62828;
+  --color-warning: #F9A825;
+  --color-info: #1565C0;
+
+  /* Fonts */
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Shadows */
+  --shadow-silk: 0 4px 20px rgba(212, 175, 55, 0.15);
+  --shadow-card: 0 2px 12px rgba(26, 10, 10, 0.08);
+  --shadow-elevated: 0 8px 30px rgba(26, 10, 10, 0.12);
+  --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.3);
+
+  /* Animations */
+  --ease-silk: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ===== BASE STYLES ===== */
+
+:root {
+  --background: #FDFAF3;
+  --foreground: #1A0A0A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-burgundy);
+}
+
+/* ===== SCROLLBAR ===== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dark);
+}
+
+/* ===== SILK TEXTURE PATTERN ===== */
+
+.silk-texture {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(128, 0, 32, 0.03) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+}
+
+/* ===== GLASSMORPHISM ===== */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: var(--shadow-card);
+}
+
+.glass-card-dark {
+  background: rgba(26, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* ===== GRADIENT BACKGROUNDS ===== */
+
+.gradient-hero {
+  background: linear-gradient(
+    135deg,
+    var(--color-burgundy) 0%,
+    var(--color-maroon) 40%,
+    var(--color-maroon-dark) 100%
+  );
+}
+
+.gradient-gold {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-dark) 0%,
+    var(--color-gold) 50%,
+    var(--color-gold-light) 100%
+  );
+}
+
+.gradient-surface {
+  background: linear-gradient(
+    180deg,
+    var(--color-surface) 0%,
+    var(--color-cream) 100%
+  );
+}
+
+/* ===== GOLD BORDER ACCENT ===== */
+
+.gold-border {
+  border: 1px solid var(--color-gold);
+  position: relative;
+}
+
+.gold-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border: 1px solid transparent;
+  border-image: linear-gradient(135deg, var(--color-gold-dark), var(--color-gold-light)) 1;
+  pointer-events: none;
+}
+
+/* ===== BUTTON STYLES ===== */
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-maroon) 0%, var(--color-maroon-dark) 100%);
+  color: var(--color-cream);
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s var(--ease-silk);
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-maroon-light) 0%, var(--color-maroon) 100%);
+  box-shadow: var(--shadow-elevated);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold) 100%);
+  color: var(--color-burgundy);
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s var(--ease-silk);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-maroon);
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s var(--ease-silk);
+  border: 2px solid var(--color-maroon);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-outline:hover {
+  background: var(--color-maroon);
+  color: var(--color-cream);
+  transform: translateY(-1px);
+}
+
+/* ===== INPUT STYLES ===== */
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: white;
+  color: var(--color-text-primary);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  transition: all 0.3s var(--ease-silk);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.input-field::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ===== CARD HOVER EFFECT ===== */
+
+.product-card {
+  transition: all 0.4s var(--ease-silk);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: white;
+  border: 1px solid var(--color-border);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-elevated);
+  border-color: var(--color-gold);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-image {
+  transition: transform 0.6s var(--ease-silk);
+}
+
+/* ===== SKELETON LOADING ===== */
+
+.skeleton {
+  background: linear-gradient(90deg, 
+    var(--color-cream) 25%, 
+    var(--color-cream-dark) 50%, 
+    var(--color-cream) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0.5rem;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s var(--ease-silk) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s var(--ease-silk) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s var(--ease-silk) forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s infinite;
+}
+
+/* ===== STAGGERED ANIMATIONS ===== */
+
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* ===== DECORATIVE ELEMENTS ===== */
+
+.ornament-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ornament-line::before,
+.ornament-line::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+/* ===== RATING STARS ===== */
+
+.star-filled {
+  color: var(--color-gold);
+}
+
+.star-empty {
+  color: var(--color-border);
+}
+
+/* ===== RESPONSIVE CONTAINER ===== */
+
+.container-silk {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-silk {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-silk {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* ===== TOAST NOTIFICATION ===== */
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  animation: slideInRight 0.4s var(--ease-silk) forwards;
+}
+
+/* ===== BADGE ===== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-gold {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--color-gold-dark);
+}
+
+.badge-maroon {
+  background: rgba(128, 0, 32, 0.1);
+  color: var(--color-maroon);
+}
+
+.badge-success {
+  background: rgba(46, 125, 50, 0.1);
+  color: var(--color-success);
+}
+
+.badge-error {
+  background: rgba(198, 40, 40, 0.1);
+  color: var(--color-error);
+}
+
+/* ===== SECTION DIVIDER ===== */
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: 3rem 0;
+}
